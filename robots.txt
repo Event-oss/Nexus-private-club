@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://event-oss.github.io/Nexus-webs/sitemap.xml

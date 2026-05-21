@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>NEXUS | Connecting Ideas. Building Success.</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#000;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    .bg-animation{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      background:
+      radial-gradient(circle at 20% 20%, rgba(212,175,55,0.08), transparent 25%),
+      radial-gradient(circle at 80% 40%, rgba(212,175,55,0.05), transparent 30%),
+      radial-gradient(circle at 50% 80%, rgba(212,175,55,0.06), transparent 25%);
+      z-index:-1;
+      animation:floatBg 12s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatBg{
+      from{
+        transform:translateY(0px);
+      }
+      to{
+        transform:translateY(-30px);
+      }
+    }
+
+    nav{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      background:#050505;
+      border-bottom:1px solid #d4af37;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:32px;
+      font-weight:bold;
+      color:#d4af37;
+      letter-spacing:3px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#d4af37;
+    }
+
+    .hero{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      text-align:center;
+      padding:20px;
+      background:
+      linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop') center/cover;
+    }
+
+    .hero h1{
+      font-size:85px;
+      color:#d4af37;
+      letter-spacing:4px;
+      margin-bottom:10px;
+    }
+
+    .hero p{
+      font-size:24px;
+      color:#ddd;
+      margin-bottom:30px;
+    }
+
+    .hero button{
+      padding:15px 35px;
+      border:none;
+      border-radius:40px;
+      background:#d4af37;
+      color:black;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero button:hover{
+      background:white;
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .section-title{
+      text-align:center;
+      color:#d4af37;
+      font-size:42px;
+      margin-bottom:40px;
+    }
+
+    .about-container,
+    .vision-container,
+    .members{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card,
+    .member-box{
+      background:#111;
+      border:1px solid #d4af37;
+      padding:30px;
+      border-radius:15px;
+      transition:0.4s;
+      text-align:center;
+    }
+
+    .card:hover,
+    .member-box:hover{
+      transform:translateY(-12px) scale(1.02);
+      box-shadow:
+      0 0 10px rgba(212,175,55,0.4),
+      0 0 30px rgba(212,175,55,0.2),
+      0 0 60px rgba(212,175,55,0.1);
+    }
+
+    .card h3,
+    .member-box h4{
+      color:#d4af37;
+      margin-bottom:15px;
+    }
+
+    .card p,
+    .member-box p{
+      color:#ddd;
+      line-height:1.8;
+    }
+
+    .member-box img{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      border:3px solid #d4af37;
+      margin-bottom:15px;
+      object-fit:cover;
+    }
+
+    .chat-box{
+      background:#111;
+      border:1px solid #d4af37;
+      padding:30px;
+      border-radius:15px;
+    }
+
+    .messages{
+      height:250px;
+      overflow-y:auto;
+      background:#000;
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:20px;
+    }
+
+    .message{
+      background:#1a1a1a;
+      padding:10px;
+      border-left:4px solid #d4af37;
+      margin-bottom:15px;
+      border-radius:5px;
+    }
+
+    .chat-input{
+      display:flex;
+      gap:10px;
+    }
+
+    .chat-input input{
+      flex:1;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:#222;
+      color:white;
+    }
+
+    .chat-input button{
+      padding:15px 25px;
+      border:none;
+      border-radius:10px;
+      background:#d4af37;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .founders{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px;
+    }
+
+    .founder-card{
+      width:300px;
+      background:#111;
+      border:1px solid #d4af37;
+      border-radius:15px;
+      padding:30px;
+      text-align:center;
+    }
+
+    .founder-card h3{
+      color:#d4af37;
+      margin-bottom:10px;
+    }
+
+    form{
+      background:#111;
+      border:1px solid #d4af37;
+      padding:40px;
+      border-radius:20px;
+      max-width:800px;
+      margin:auto;
+    }
+
+    .form-group{
+      margin-bottom:20px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:10px;
+      color:#d4af37;
+      font-weight:bold;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:#222;
+      color:white;
+    }
+
+    textarea{
+      resize:none;
+      height:130px;
+    }
+
+    form button{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:12px;
+      background:#d4af37;
+      color:black;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    footer{
+      background:#050505;
+      border-top:1px solid #d4af37;
+      padding:30px;
+      text-align:center;
+    }
+
+    footer h3{
+      color:#d4af37;
+      margin-bottom:10px;
+    }
+
+    .hidden{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 1s ease;
+    }
+
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero h1{
+        font-size:55px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-animation"></div>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">NEXUS</div>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#chat">Group Chat</a></li>
+      <li><a href="#founders">Founders</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>NEXUS</h1>
+
+    <p>Connecting Ideas. Building Success.</p>
+
+    <a href="#join">
+      <button>Apply For Membership</button>
+    </a>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2 class="section-title">About Nexus</h2>
+
+    <div class="about-container">
+
+      <div class="card">
+        <h3>Private Success Network</h3>
+        <p>
+          Nexus is an exclusive community for ambitious and financially successful
+          young individuals who want to connect, collaborate, and exchange powerful ideas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Elite Connections</h3>
+        <p>
+          The platform creates opportunities for networking, mentorship,
+          partnerships, investment conversations, and meaningful relationships.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Growth Environment</h3>
+        <p>
+          Members inspire each other to achieve higher levels of success,
+          innovation, leadership, and influence.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- VISION -->
+
+  <section id="vision">
+
+    <h2 class="section-title">Vision & Mission</h2>
+
+    <div class="vision-container">
+
+      <div class="card">
+        <h3>Vision</h3>
+        <p>
+          To build Africa's most influential private network
+          of young successful individuals.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Mission</h3>
+        <p>
+          To connect ambitious achievers through strategic collaboration,
+          meaningful conversations, and innovation.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MEMBERS -->
+
+  <section id="members">
+
+    <h2 class="section-title">Community Dashboard</h2>
+
+    <div class="members">
+
+      <div class="member-box">
+        <img src="IMG-20241123-WA0026.jpg" alt="Events N.">
+        <h4>Events N.</h4>
+        <p>Founder</p>
+      </div>
+
+      <div class="member-box">
+        <img src="IMG-20260520-WA0033.jpg" alt="Boitumelo T.">
+        <h4>Boitumelo T.</h4>
+        <p>Founder</p>
+      </div>
+
+      <div class="member-box">
+        <img src="https://randomuser.me/api/portraits/men/51.jpg">
+        <h4>James T.</h4>
+        <p>Business Strategist</p>
+      </div>
+
+      <div class="member-box">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg">
+        <h4>Amanda P.</h4>
+        <p>Startup Founder</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CHAT -->
+
+  <section id="chat">
+
+    <h2 class="section-title">Members Group Chat</h2>
+
+    <div class="chat-box">
+
+      <div class="messages" id="messages">
+
+        <div class="message">
+          <strong>David:</strong> Looking for investors in fintech innovation.
+        </div>
+
+        <div class="message">
+          <strong>Sarah:</strong> Interested. Let's connect after this meeting.
+        </div>
+
+      </div>
+
+      <div class="chat-input">
+
+        <input type="text" id="chatMessage" placeholder="Type your message...">
+
+        <button onclick="sendMessage()">Send</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section id="stats">
+
+    <h2 class="section-title">Nexus In Numbers</h2>
+
+    <div class="members">
+
+      <div class="member-box">
+        <h2>2,500+</h2>
+        <p>Elite Members</p>
+      </div>
+
+      <div class="member-box">
+        <h2>$120M+</h2>
+        <p>Business Value Connected</p>
+      </div>
+
+      <div class="member-box">
+        <h2>40+</h2>
+        <p>Countries Represented</p>
+      </div>
+
+      <div class="member-box">
+        <h2>300+</h2>
+        <p>Startups & Ventures</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOUNDERS -->
+
+  <section id="founders">
+
+    <h2 class="section-title">Founders</h2>
+
+    <div class="founders">
+
+      <div class="founder-card">
+        <h3>Boitumelo Michael Tladi</h3>
+        <p>Founder of Nexus</p>
+      </div>
+
+      <div class="founder-card">
+        <h3>Nchabeleng Events</h3>
+        <p>Co-Founder of Nexus</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- JOIN -->
+
+  <section id="join">
+
+    <h2 class="section-title">Membership Application</h2>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+      <input type="hidden" name="access_key" value="6e1b0a49-1a46-4b9d-bb71-a057ceac0252">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="Full Name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="Email Address" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" name="Phone Number" placeholder="Enter your phone number" required>
+      </div>
+
+      <div class="form-group">
+        <label>Where Are You From?</label>
+        <input type="text" name="Location" placeholder="Country / City" required>
+      </div>
+
+      <div class="form-group">
+        <label>What Do You Do?</label>
+        <input type="text" name="Occupation" placeholder="Business / Career / Profession" required>
+      </div>
+
+      <div class="form-group">
+        <label>Average Annual Income</label>
+
+        <select name="Income" required>
+          <option>Select Range</option>
+          <option>$10,000 - $50,000</option>
+          <option>$50,000 - $100,000</option>
+          <option>$100,000 - $500,000</option>
+          <option>$500,000+</option>
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>What Impact Would You Bring To Nexus?</label>
+
+        <textarea
+          name="Contribution"
+          placeholder="Tell us how you can contribute to the community..."
+          required
+        ></textarea>
+
+      </div>
+
+      <button type="submit">Submit Application</button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h3>NEXUS</h3>
+
+    <p>Connecting Ideas. Building Success.</p>
+
+  </footer>
+
+  <script>
+
+    function sendMessage(){
+
+      let input = document.getElementById("chatMessage");
+      let messages = document.getElementById("messages");
+
+      if(input.value.trim() !== ""){
+
+        let newMessage = document.createElement("div");
+
+        newMessage.classList.add("message");
+
+        newMessage.innerHTML =
+        "<strong>You:</strong> " + input.value;
+
+        messages.appendChild(newMessage);
+
+        let userText = input.value.toLowerCase();
+
+        input.value = "";
+
+        messages.scrollTop = messages.scrollHeight;
+
+        setTimeout(() => {
+
+          let reply = document.createElement("div");
+
+          reply.classList.add("message");
+
+          if(userText.includes("investment")){
+
+            reply.innerHTML =
+            "<strong>Sarah:</strong> Let's discuss the investment opportunity privately.";
+
+          }
+
+          else if(userText.includes("startup")){
+
+            reply.innerHTML =
+            "<strong>David:</strong> Your startup sounds interesting. Tell us more.";
+
+          }
+
+          else{
+
+            reply.innerHTML =
+            "<strong>Nexus AI:</strong> Thank you for contributing to the discussion.";
+
+          }
+
+          messages.appendChild(reply);
+
+          messages.scrollTop = messages.scrollHeight;
+
+        },1000);
+
+      }
+
+    }
+
+    const observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+        }
+
+      });
+
+    });
+
+    document.querySelectorAll("section").forEach(sec => {
+
+      sec.classList.add("hidden");
+
+      observer.observe(sec);
+
+    });
+
+  </script>
+
+</body>
+</html>
